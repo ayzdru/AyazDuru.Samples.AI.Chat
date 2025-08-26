@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.AI;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using OllamaSharp;
 namespace AyazDuru.Samples.AI.Chat.Console
 {
@@ -6,21 +8,14 @@ namespace AyazDuru.Samples.AI.Chat.Console
     {
         static async Task Main(string[] args)
         {
-            IChatClient client = new OllamaApiClient(
-    new Uri("http://localhost:11434/"), "llama3.3");
-
-
-            List<ChatMessage> history = [];
-            while (true)
-            {
-                System.Console.Write("Q: ");
-                history.Add(new(ChatRole.User, System.Console.ReadLine()));
-
-                ChatResponse response = await client.GetResponseAsync(history);
-                System.Console.WriteLine(response);
-
-                history.AddMessages(response);
-            }
+            var builder = Host.CreateApplicationBuilder(args);
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddChatClient(new OllamaApiClient(new Uri("http://localhost:11434"), "llama3.2"))
+                .UseDistributedCache();
+            builder.AddServiceDefaults();
+            builder.Services.AddHostedService<ChatService>();
+            using IHost host = builder.Build();
+            host.Run();          
         }
     }
 }

@@ -4,17 +4,18 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>0b7cc4e1-6935-4ca4-9f64-681c850a0ab1</UserSecretsId>
+    <UserSecretsId>e8b6a3ad-44d4-46ff-907c-82cf1af07e59</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Aspire.OllamaSharp" Version="9.4.1-beta.291" />
-    <PackageReference Include="OllamaSharp" Version="5.1.18" />
+    <PackageReference Include="CommunityToolkit.Aspire.OllamaSharp" Version="9.7.0" />
+    <PackageReference Include="OllamaSharp" Version="5.3.6" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="9.8.0" />
-    <PackageReference Include="Microsoft.SemanticKernel.Core" Version="1.61.0" />
-    <PackageReference Include="PdfPig" Version="0.1.10" />
-    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
-    <PackageReference Include="Microsoft.SemanticKernel.Connectors.SqliteVec" Version="1.61.0-preview" />
+    <PackageReference Include="Microsoft.SemanticKernel.Core" Version="1.63.0" />
+    <PackageReference Include="PdfPig" Version="0.1.11" />
+    <PackageReference Include="System.Linq.Async" Version="6.0.3" />
+    <PackageReference Include="Aspire.Qdrant.Client" Version="9.4.1" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.Qdrant" Version="1.61.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

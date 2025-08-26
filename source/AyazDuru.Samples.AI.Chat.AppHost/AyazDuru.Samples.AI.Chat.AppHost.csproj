@@ -8,15 +8,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsAspireHost>true</IsAspireHost>
-    <UserSecretsId>c85eb701-299d-4b24-86f2-ee47f08bfb70</UserSecretsId>
+    <UserSecretsId>44c4409d-3173-4b41-a691-42ca1db0f290</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.4.0" />
-    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Ollama" Version="9.4.1-beta.291" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.4.1" />
+    <PackageReference Include="Aspire.Hosting.Qdrant" Version="9.4.1" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Ollama" Version="9.7.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AyazDuru.Samples.AI.Chat.Console\AyazDuru.Samples.AI.Chat.Console.csproj" />
     <ProjectReference Include="..\AyazDuru.Samples.AI.Chat.Web\AyazDuru.Samples.AI.Chat.Web.csproj" />
   </ItemGroup>
 

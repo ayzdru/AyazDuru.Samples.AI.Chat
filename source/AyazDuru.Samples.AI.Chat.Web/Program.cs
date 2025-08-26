@@ -1,5 +1,7 @@
 using Microsoft.Extensions.AI;
 using AyazDuru.Samples.AI.Chat.Web.Components;
+using AyazDuru.Samples.AI.Chat.Web.Services;
+using AyazDuru.Samples.AI.Chat.Web.Services.Ingestion;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
@@ -10,7 +12,14 @@ builder.AddOllamaApiClient("chat")
     .UseFunctionInvocation()
     .UseOpenTelemetry(configure: c =>
         c.EnableSensitiveData = builder.Environment.IsDevelopment());
+builder.AddOllamaApiClient("embeddings")
+    .AddEmbeddingGenerator();
 
+builder.AddQdrantClient("vectordb");
+builder.Services.AddQdrantCollection<Guid, IngestedChunk>("data-ayazduru_samples_a_chat-chunks");
+builder.Services.AddQdrantCollection<Guid, IngestedDocument>("data-ayazduru_samples_a_chat-documents");
+builder.Services.AddScoped<DataIngestor>();
+builder.Services.AddSingleton<SemanticSearch>();
 
 var app = builder.Build();
 
@@ -30,5 +39,13 @@ app.UseAntiforgery();
 app.UseStaticFiles();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+// By default, we ingest PDF files from the /wwwroot/Data directory. You can ingest from
+// other sources by implementing IIngestionSource.
+// Important: ensure that any content you ingest is trusted, as it may be reflected back
+// to users or could be a source of prompt injection risk.
+await DataIngestor.IngestDataAsync(
+    app.Services,
+    new PDFDirectorySource(Path.Combine(builder.Environment.WebRootPath, "Data")));
 
 app.Run();

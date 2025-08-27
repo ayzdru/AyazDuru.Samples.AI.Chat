@@ -8,15 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="KokoroSharp.CPU" Version="0.6.2" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="9.8.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
     <PackageReference Include="OllamaSharp" Version="5.3.6" />
+    <PackageReference Include="System.Speech" Version="9.0.8" />
+    <PackageReference Include="Whisper.net.AllRuntimes" Version="1.8.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AyazDuru.Samples.AI.Chat.ServiceDefaults\AyazDuru.Samples.AI.Chat.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\EchoSharp\components\EchoSharp.NAudio\EchoSharp.NAudio.csproj" />
+    <ProjectReference Include="..\EchoSharp\components\EchoSharp.Onnx.SileroVad\EchoSharp.Onnx.SileroVad.csproj" />
+    <ProjectReference Include="..\EchoSharp\components\EchoSharp.Whisper.net\EchoSharp.Whisper.net.csproj" />
   </ItemGroup>
 
 </Project>

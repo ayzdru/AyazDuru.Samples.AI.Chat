@@ -1,0 +1,3 @@
+Docker Desktop'ı yüklediğinizden ve başlattığınızdan emin olun.
+
+Daha sonra AyazDuru.Samples.AI.Chat.AppHost projesini çalıştırıp, ollama, qdrant docker containerlarının başlatıldığından emin olduktan sonra, AyazDuru.Samples.AI.Chat.AppHost ve AyazDuru.Samples.AI.Chat.Console projelerini solution'a sağ tıklayıp >> Configure Startup Projects ile seçip aynı anda çalıştırmanız gerekmektedir. Bu şekilde Aspire Dashboard üzerinden Blazor web projesini ve gerekli container ve aspire service discovery'nin başlatılması sağlanacaktır. Diğer türlü ollama ve qdrant containerlarını manuel olarak başlatmanız gerekecektir.
